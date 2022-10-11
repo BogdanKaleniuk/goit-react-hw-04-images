@@ -37,17 +37,17 @@ async componentDidUpdate(prevProps, prevState) {
         }));
         if (total === 0) {
           toast.error(
-            'Sorry, there are no images matching your query. Please try again.'
+            'Нічого не знайдено по запиту.'
           );
         }
         if (query === '') {
-          toast.error('Write something!');
+          toast.error('Введіть щось!');
         }
         if (prevError !== error) {
           toast.error(error);
         }
       } catch {
-        this.setState({ error: 'Can`t load images!' });
+        this.setState({ error: 'Зображення не загрузилось!' });
       } finally {
         this.setState({ isLoading: false });
       }

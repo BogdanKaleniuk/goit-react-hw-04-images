@@ -14,7 +14,7 @@ export default function SearchBar({ onSubmit }) {
         <Search>
           <FormEl>
             <Btn type="submit" disabled={isSubmitting}>
-              <AiFillForward size={30} />
+              <AiFillForward size={35} />
             </Btn>
             <Input
               name="searchQuery"

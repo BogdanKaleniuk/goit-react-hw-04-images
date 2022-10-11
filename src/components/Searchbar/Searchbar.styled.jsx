@@ -31,16 +31,13 @@ export const FormEl = styled(Form)`
 export const Input = styled(Field)`
   display: inline-block;
   width: 100%;
-  font: inherit;
   font-size: 15px;
   border: none;
   outline: none;
 `;
 
 export const Btn = styled.button`
-  width: 48px;
-  height: 48px;
-  display: inline-block;
+  margin-right: 0;
   border: 0;
   opacity: 0.6;
   transition: opacity 200ms cubic-bezier(0.5, 0, 0.5, 1);
