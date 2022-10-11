@@ -22,7 +22,6 @@ async componentDidUpdate(prevProps, prevState) {
       page,
       query,
       error,
-      // total
     } = this.state;
     const { page: prevPage, query: prevQuery, error: prevError } = prevState;
 
