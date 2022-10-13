@@ -34,6 +34,9 @@ async componentDidUpdate(prevProps, prevState) {
         this.setState(({ items }) => ({
           items: [...items, ...images],
         }));
+         if (prevPage === page) {
+          this.setState({ isLoading: false })
+        }
         if (total === 0) {
           toast.error(
             'Нічого не знайдено по запиту.'
@@ -55,6 +58,7 @@ async componentDidUpdate(prevProps, prevState) {
 };
 
   handlerFormSubmit = (inputName) => {
+    if (this.state.query !== inputName.searchQuery.trim()) {
     this.setState({
       page: 1,
       isLoading: false,
@@ -62,7 +66,7 @@ async componentDidUpdate(prevProps, prevState) {
       items: [],
       query: inputName.searchQuery,
     });
-  };
+  };};
 
    loadMore = () => {
     this.setState(prevState => ({

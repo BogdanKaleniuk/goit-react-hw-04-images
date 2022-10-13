@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { AiFillForward } from 'react-icons/ai';
 import { Search, FormEl, Input, Btn } from './Searchbar.styled';
@@ -6,7 +7,6 @@ export default function SearchBar({ onSubmit }) {
   const handleSubmit = async (values, actions) => {
     await onSubmit(values);
     actions.setSubmitting(false);
-    actions.resetForm();
   };
   return (
     <Formik initialValues={{ searchQuery: '' }} onSubmit={handleSubmit}>
@@ -29,3 +29,8 @@ export default function SearchBar({ onSubmit }) {
     </Formik>
   );
 }
+
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+

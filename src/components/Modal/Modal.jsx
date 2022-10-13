@@ -27,7 +27,7 @@ export default class Modal extends Component {
     return (
       <ModalStyle onClick={this.handleBackdropClick}>
         <ModalWindow>
-          <Img src={this.props.image.largeImageURL} alt={this.props.imageTags} />
+          <Img src={this.props.image.largeImageURL} alt={this.props.image.tags} />
         </ModalWindow>
       </ModalStyle>
     );
@@ -35,6 +35,9 @@ export default class Modal extends Component {
 }
 
 Modal.propTypes = {
-  image: PropTypes.object.isRequired,
+  image: PropTypes.object({
+    largeImageURL: PropTypes.string.isRequired,
+    tags: PropTypes.string.isRequired,
+  }),
   toggleModal: PropTypes.func.isRequired,
 };
