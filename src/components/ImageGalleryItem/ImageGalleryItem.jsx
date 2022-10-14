@@ -26,5 +26,8 @@ export default class ImageGlleryItem extends Component {
 }
 
 ImageGlleryItem.propTypes = {
-  item: PropTypes.object.isRequired,
+  item: PropTypes.shape({
+    webformatURL: PropTypes.string.isRequired,
+    tags: PropTypes.string.isRequired,
+  }),
 };
