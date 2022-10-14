@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
+import { createPortal } from 'react-dom';
 import { ModalStyle, ModalWindow, Img } from './Modal.styled';
+
+const rootModal = document.querySelector('#rootModal');
 
 export default class Modal extends Component {
   componentDidMount() {
@@ -11,31 +14,35 @@ export default class Modal extends Component {
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  handleKeyDown = event => {
-    if (event.code === 'Escape') {
+  handleKeyDown = e => {
+    if (e.code === 'Escape') {
       this.props.toggleModal();
+      console.log('Нажали на ескейп')
     }
   };
 
-  handleClikOnBackdrop = event => {
-    if (event.currentTarget === event.target) {
+  handleClickOnBackdrop = e => {
+    if (e.currentTarget === e.target) {
       this.props.toggleModal();
+      console.log('Нажали на бекдроп но не робе')
     }
   };
 
   render() {
-    return (
-      <ModalStyle onClick={this.handleBackdropClick}>
-        <ModalWindow>
-          <Img src={this.props.image.largeImageURL} alt={this.props.image.tags} />
+    const { image } = this.props;
+    return createPortal(
+      <ModalStyle onClick={this.handleClickOnBackdrop}>
+        <ModalWindow onClick={this.handleKeyDown}>
+          <Img src={image.largeImageURL} alt={image.tags} />
         </ModalWindow>
-      </ModalStyle>
+      </ModalStyle>,
+      rootModal,
     );
   }
 }
 
 Modal.propTypes = {
-  image: PropTypes.object({
+  image: PropTypes.shape({
     largeImageURL: PropTypes.string.isRequired,
     tags: PropTypes.string.isRequired,
   }),

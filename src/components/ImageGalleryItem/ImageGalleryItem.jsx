@@ -16,8 +16,12 @@ export default class ImageGlleryItem extends Component {
   render() {
     return (
       <>
-        <Item id={this.props.item.id} onClick={this.toggleModal}>
-          <Img src={this.props.item.webformatURL} alt={this.props.item.tags} />
+        <Item 
+        id={this.props.item.id} >
+          <Img 
+          src={this.props.item.webformatURL} 
+          alt={this.props.item.tags} 
+          onClick={this.toggleModal}/>
           {this.state.showModal && <Modal image={this.props.item} toggleModal={this.toggleModal} />}
         </Item>
       </>
